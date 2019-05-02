@@ -22,4 +22,11 @@ func main() {
 	}
 	fmt.Println(b)
 
+
+	var p1 Person
+	err1:=json.Unmarshal(b,&p1)
+	if err != nil{
+		fmt.Println(err1)
+	}
+	fmt.Println(p1)
 }
