@@ -6,11 +6,11 @@ import (
 )
 
 type Person struct {
-	FirstName  string
-	LastName   string
-	Age        int
-	Address    string
-	IsMarriege bool
+	FirstName  string `json:",omitempty"`
+	LastName   string `json:",omitempty"`
+	Age        int    `json:",omitempty"`
+	Address    string `json:",omitempty"`
+	IsMarriege bool   `json:",omitempty"`
 }
 
 func main() {
@@ -22,11 +22,17 @@ func main() {
 	}
 	fmt.Println(b)
 
-
 	var p1 Person
-	err1:=json.Unmarshal(b,&p1)
-	if err != nil{
+	err1 := json.Unmarshal(b, &p1)
+	if err != nil {
 		fmt.Println(err1)
 	}
 	fmt.Println(p1)
+
+	p2 := Person{FirstName: "Ivan", Age: 25}
+	b1, err2 := json.Marshal(p2)
+	if err2 != nil {
+		fmt.Println(err2)
+	}
+	fmt.Println(string(b1))
 }
